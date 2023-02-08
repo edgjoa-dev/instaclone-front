@@ -1,10 +1,12 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 
-export const RegisterForm = () => {
+export const RegisterForm = (props) => {
+  console.log(props);
+
   return (
     <Box>
-      <h1> Register </h1>
+      <Text as="h1">Register</Text>
     </Box>
   );
 };

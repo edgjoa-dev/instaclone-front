@@ -5,7 +5,7 @@ import { LoginForm } from "../components/Auth/login";
 import { RegisterForm } from "../components/Auth/register";
 
 export const AuthPage = () => {
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   return (
     <Box
@@ -26,7 +26,14 @@ export const AuthPage = () => {
         mt="50px"
         borderRadius="10px"
       >
-        <Text> {showLogin ? <LoginForm /> : <RegisterForm />} </Text>
+        <Text as="div">
+          {" "}
+          {showLogin ? (
+            <LoginForm />
+          ) : (
+            <RegisterForm setShowLogin={setShowLogin} />
+          )}{" "}
+        </Text>
       </Box>
 
       <Box
@@ -45,8 +52,9 @@ export const AuthPage = () => {
                 as="span"
                 onClick={() => setShowLogin(!showLogin)}
                 color="actionColor.100"
-                ml="5px"
                 _hover={{ cursor: "pointer", textDecor: "underline" }}
+                fontWeight="bold"
+                ml="5px"
               >
                 Registrate
               </Text>
@@ -59,6 +67,7 @@ export const AuthPage = () => {
                 onClick={() => setShowLogin(!showLogin)}
                 ml="5px"
                 color="actionColor.100"
+                fontWeight="bold"
                 _hover={{ cursor: "pointer", textDecor: "underline" }}
               >
                 Inicia Sesión
