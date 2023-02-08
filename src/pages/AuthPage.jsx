@@ -5,7 +5,7 @@ import { LoginForm } from "../components/Auth/login";
 import { RegisterForm } from "../components/Auth/register";
 
 export const AuthPage = () => {
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   return (
     <Box
@@ -25,6 +25,7 @@ export const AuthPage = () => {
         border="1px solid gray.500"
         mt="50px"
         borderRadius="10px"
+        width={{ base: "75%", sm: "100%", md: "25%" }}
       >
         <Text as="div">
           {" "}

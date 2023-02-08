@@ -32,4 +32,12 @@ export const theme = extendBaseTheme({
       100: "#ed4956",
     },
   },
+
+  breakpoints: {
+    sm: "320px",
+    md: "768px",
+    lg: "960px",
+    xl: "1200px",
+    "2xl": "1536px",
+  },
 });

@@ -19,6 +19,7 @@ export const RegisterForm = (props) => {
         <InputGroup display="flex" justifyContent="center" flexDir="column">
           <Input
             type="text"
+            autoFocus={true}
             bg="gray.100"
             borderRadius="10px"
             placeholder="Nombre y apellidos"
