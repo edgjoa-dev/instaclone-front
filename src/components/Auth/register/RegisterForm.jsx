@@ -1,9 +1,10 @@
+import { Box } from "@chakra-ui/react";
 import React from "react";
 
 export const RegisterForm = () => {
   return (
-    <div>
+    <Box>
       <h1> Register </h1>
-    </div>
+    </Box>
   );
 };
