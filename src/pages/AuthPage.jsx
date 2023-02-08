@@ -5,7 +5,7 @@ import { LoginForm } from "../components/Auth/login";
 import { RegisterForm } from "../components/Auth/register";
 
 export const AuthPage = () => {
-  const [showLogin, setShowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <Box
