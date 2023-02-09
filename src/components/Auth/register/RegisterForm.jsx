@@ -1,11 +1,26 @@
-import { Box, Input, InputGroup, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Input, InputGroup, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
 export const RegisterForm = (props) => {
   console.log(props);
 
+  const toggleSubmit = ()=> {
+    console.log('formulario enviado');
+  }
+
   return (
-    <Box display="flex" justifyContent="center" flexDir="column" p="3">
+    <Box
+      display="flex"
+      justifyContent="center"
+      flexDir="column"
+      p="3"
+      bg="gray.50"
+      borderRadius='10px'
+      boxShadow='2xl'
+      w='calc( 100% - 10px )'
+      h='500px'
+    >
+      
       <Text
         as="h1"
         fontSize="17px"
@@ -15,7 +30,7 @@ export const RegisterForm = (props) => {
       >
         Regístrate para ver fotos y vídeos de tus amigos.
       </Text>
-      <Stack spacing={3}>
+      <Stack spacing={3} p="1rem">
         <InputGroup display="flex" justifyContent="center" flexDir="column">
           <Input
             type="text"
@@ -73,7 +88,19 @@ export const RegisterForm = (props) => {
             mb={3}
           />
         </InputGroup>
+        <Button
+          type="submit"
+          bg='actionColor.100'
+          color='gray.100'
+          w='full'
+          p='1'
+          borderRadius='5px'
+          fontWeight='medium'
+          _hover={{ bg:'#1D4ED8' }} onClick={toggleSubmit}>
+          Registrar
+        </Button>
       </Stack>
     </Box>
+    
   );
 };
