@@ -1,4 +1,4 @@
-import { Box, Image, Text } from '@chakra-ui/react';
+import { Box, Image, Text, textDecoration } from '@chakra-ui/react';
 import React, { useState } from 'react'
 
 import instaclone from '../assets/instaclone.png'
@@ -17,7 +17,7 @@ export const AuthPage = () => {
           <Image src={instaclone} alt='instaclone_logo' w='250px'/>
         </Box>
         
-        <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' p='5rem' borderRadius='15px' borderWidth='thin'>
+        <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' p='1rem'>
           {showLogin ? (
             <LoginForm />
           ) : (
@@ -29,12 +29,12 @@ export const AuthPage = () => {
           {showLogin ? (
             <Text as='p'>
               ¿No tienes cuenta?
-              <Text as='span' cursor={'pointer'} ml='3' color='actionColor.100' fontWeight='medium'  _hover={{ cursor:'pointer' }} onClick={() => setShowLogin(!showLogin)}>Regístrate</Text>
+              <Text as='span' cursor={'pointer'} ml='3' color='actionColor.100' fontWeight='medium'  _hover={{ cursor:'pointer', textDecoration:'underline' }} onClick={() => setShowLogin(!showLogin)}>Regístrate</Text>
             </Text>
           ) : (
             <Text as='p'>
               ¡Entra con tu cuenta!
-              <Text as='span' cursor={'pointer'} ml='3' color='actionColor.100' fontWeight='medium' _hover={{ cursor:'pointer' }} onClick={() => setShowLogin(!showLogin)}>
+              <Text as='span' cursor={'pointer'} ml='3' color='actionColor.100' fontWeight='medium' _hover={{ cursor:'pointer', textDecoration:'underline' }} onClick={() => setShowLogin(!showLogin)}>
                 Iniciar sesión
               </Text>
             </Text>

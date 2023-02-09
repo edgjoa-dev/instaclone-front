@@ -6,27 +6,36 @@ import {
   FormErrorMessage,
   FormHelperText,
   Input,
+  Box,
+  Button,
 } from '@chakra-ui/react'
 
 export const LoginForm = () => {
   return (
-<form>
-<FormControl p='5'>
-  <FormLabel>Nombre y apellidos</FormLabel>
-  <Input type='text' variant='flushed' mb='5' p='2' bg='gray.50'/>
-
-    <FormLabel>Email</FormLabel>
-  <Input type='email' variant='flushed' mb='5' p='2' bg='gray.50'/>
-  
-  <FormLabel>Nombre de usuario</FormLabel>
-  <Input type='text' variant='flushed' mb='5' p='2' bg='gray.50'/>
-  
-  <FormLabel>Contraseña</FormLabel>
-  <Input type='password' variant='flushed' mb='5' p='2' bg='gray.50'/>
-  
-  <FormLabel>Repetir contraseña</FormLabel>
-  <Input type='password' variant='flushed' mb='5' p='2' bg='gray.50'/>
-</FormControl>
+    <Box p={5} shadow="md" borderWidth="1px" h='500px' w='450px' borderRadius='15px' display='flex' justifyContent='center' alignItems='center'  >
+    <form>
+      <FormControl>
+        <FormLabel htmlFor="email">Email</FormLabel>
+        <Input
+          borderWidth="1px"
+          borderRadius='5px'
+          p='3'
+          w='full'
+          type="email"
+          id="email"
+        />
+      </FormControl>
+      <FormControl mt={4}>
+        <FormLabel htmlFor="password">Password</FormLabel>
+        <Input
+          type="password"
+          id="password"
+        />
+      </FormControl>
+      <Button mt={4} type="submit" colorScheme="teal">
+        Submit
+      </Button>
     </form>
+  </Box>
   )
 }
