@@ -8,34 +8,43 @@ import {
   Input,
   Box,
   Button,
+  Text,
 } from '@chakra-ui/react'
 
 export const LoginForm = () => {
   return (
-    <Box p={5} shadow="md" borderWidth="1px" h='500px' w='450px' borderRadius='15px' display='flex' justifyContent='center' alignItems='center'  >
-    <form>
-      <FormControl>
-        <FormLabel htmlFor="email">Email</FormLabel>
+    <Box
+      alignItems='center'
+      //bg='gold'
+      borderRadius='15px'
+      borderWidth="1px"
+      display='flex'
+      flexDirection='column'
+      h='500px'
+      justifyContent='flex-start'
+      shadow="md"
+      p='5'
+      w='450px'
+    >
+      <Text as='h3' p='5' mb='10' mt='1' fontSize='lg' fontWeight='medium' >
+        Regístrate para ver fotos y videos de tus amigos.
+      </Text>
+
+      <Box w='calc( 100% - 25% )'>
         <Input
-          borderWidth="1px"
+          autoFocus={true}
+          placeholder='Correo electronico'
           borderRadius='5px'
-          p='3'
+          p='2'
           w='full'
-          type="email"
-          id="email"
+          bg='gray.50'
+          variant='flushed'
         />
-      </FormControl>
-      <FormControl mt={4}>
-        <FormLabel htmlFor="password">Password</FormLabel>
-        <Input
-          type="password"
-          id="password"
-        />
-      </FormControl>
-      <Button mt={4} type="submit" colorScheme="teal">
+      </Box>
+
+      <Button mt={4} type="submit" colorScheme="blue" w='calc( 100% - 25% )'>
         Submit
       </Button>
-    </form>
   </Box>
   )
 }

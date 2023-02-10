@@ -1,4 +1,7 @@
 import { extendBaseTheme } from "@chakra-ui/react";
+import chakraTheme from '@chakra-ui/theme'
+
+const { Button, Form, Input, Box, Text } = chakraTheme.components
 
 export const theme = extendBaseTheme({
   colors: {
@@ -43,11 +46,11 @@ export const theme = extendBaseTheme({
     },
   },
 
-  breakpoints: {
-    sm: "320px",
-    md: "768px",
-    lg: "960px",
-    xl: "1200px",
-    "2xl": "1536px",
+  components: {
+    Button,
+    Form,
+    Input,
+    Box,
+    Text,
   },
 });

@@ -11,7 +11,7 @@ export const AuthPage = () => {
 
 
   return (
-      <Box bg='bgLight.100' display='flex' flexDirection='column' justifyContent='center' alignItems='center' h='100vh' w='100vw'  p='10'>
+      <Box bg='bgLight.100' display='flex' flexDirection='column' justifyContent='center' alignItems='center' h='100vh' w='100vw'  p='5'>
 
         <Box as='div' mb='5rem'>
           <Image src={instaclone} alt='instaclone_logo' w='250px'/>
