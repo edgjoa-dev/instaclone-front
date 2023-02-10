@@ -26,7 +26,7 @@ export const LoginForm = () => {
       p='5'
       w='450px'
     >
-      <Text as='h3' p='5' mb='10' mt='1' fontSize='lg' fontWeight='medium' >
+      <Text as='h3' p='5' mb='10' mt='1' fontSize='lg' fontWeight='medium' textAlign='center'>
         Regístrate para ver fotos y videos de tus amigos.
       </Text>
 
@@ -39,10 +39,22 @@ export const LoginForm = () => {
           w='full'
           bg='gray.50'
           variant='flushed'
+          type='email'
+          mb='5'
+        />
+
+        <Input
+          placeholder='Password'
+          borderRadius='5px'
+          p='2'
+          w='full'
+          bg='gray.50'
+          variant='flushed'
+          type='password'
         />
       </Box>
 
-      <Button mt={4} type="submit" colorScheme="blue" w='calc( 100% - 25% )'>
+      <Button mt={20} type="submit" colorScheme="blue" w='calc( 100% - 25% )'>
         Submit
       </Button>
   </Box>
