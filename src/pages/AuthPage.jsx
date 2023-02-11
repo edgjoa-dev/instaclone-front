@@ -1,4 +1,4 @@
-import { Box, Image, Text, textDecoration } from '@chakra-ui/react';
+import { Box, Image, Text } from '@chakra-ui/react';
 import React, { useState } from 'react'
 
 import instaclone from '../assets/instaclone.png'
@@ -17,7 +17,7 @@ export const AuthPage = () => {
           <Image src={instaclone} alt='instaclone_logo' w='250px'/>
         </Box>
         
-        <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' p='1rem'>
+        <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' p='1rem' >
           {showLogin ? (
             <LoginForm />
           ) : (

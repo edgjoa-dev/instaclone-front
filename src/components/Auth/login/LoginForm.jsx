@@ -1,10 +1,7 @@
 import React from 'react'
 
 import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
+  Flex,
   Input,
   Box,
   Button,
@@ -24,13 +21,13 @@ export const LoginForm = () => {
       justifyContent='flex-start'
       shadow="md"
       p='5'
-      w='450px'
+      w= {[ 300 , 400 , 500 ]}
     >
       <Text as='h3' p='5' mb='10' mt='1' fontSize='lg' fontWeight='medium' textAlign='center'>
         Regístrate para ver fotos y videos de tus amigos.
       </Text>
 
-      <Box w='calc( 100% - 25% )'>
+      <Flex w='calc( 100% - 25% )' justifyContent='center' flexDirection='column' >
         <Input
           autoFocus={true}
           placeholder='Correo electronico'
@@ -52,7 +49,7 @@ export const LoginForm = () => {
           variant='flushed'
           type='password'
         />
-      </Box>
+      </Flex>
 
       <Button mt={20} type="submit" colorScheme="blue" w='calc( 100% - 25% )'>
         Submit
