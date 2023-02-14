@@ -49,7 +49,7 @@ export const LoginForm = () => {
       variant='flushed'
       type='password'
     />
-    <Button mt={20} type="submit" colorScheme="blue" w='calc( 100% - 25% )'>
+    <Button mt={20} type="submit" colorScheme="blue" w='full'>
       Login
     </Button>
 

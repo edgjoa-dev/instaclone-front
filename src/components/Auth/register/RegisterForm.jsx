@@ -81,7 +81,7 @@ export const RegisterForm = (props) => {
     mb='5'
   />
 
-  <Button type="submit" mt='2' colorScheme="blue" w='calc( 100% - 25% )'>
+  <Button type="submit" mt='2' colorScheme="blue" w='full'>
     Registrar
   </Button>
 
