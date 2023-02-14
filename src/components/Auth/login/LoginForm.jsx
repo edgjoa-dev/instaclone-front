@@ -24,36 +24,38 @@ export const LoginForm = () => {
       w= {[ 300 , 400 , 500 ]}
     >
       <Text as='h3' p='5' mb='10' mt='1' fontSize='lg' fontWeight='medium' textAlign='center'>
-        Regístrate para ver fotos y videos de tus amigos.
+        Entra para ver fotos y vídeos de tus amigos.
       </Text>
 
-      <Flex w='calc( 100% - 25% )' justifyContent='center' flexDirection='column' >
-        <Input
-          autoFocus={true}
-          placeholder='Correo electronico'
-          borderRadius='5px'
-          p='2'
-          w='full'
-          bg='gray.50'
-          variant='flushed'
-          type='email'
-          mb='5'
-        />
+  <Flex w='calc( 100% - 25% )' justifyContent='center' flexDirection='column' >
+    <Input
+      autoFocus={true}
+      placeholder='Correo electronico'
+      borderRadius='5px'
+      p='2'
+      w='full'
+      bg='gray.50'
+      variant='flushed'
+      type='email'
+      mb='5'
+    />
 
-        <Input
-          placeholder='Password'
-          borderRadius='5px'
-          p='2'
-          w='full'
-          bg='gray.50'
-          variant='flushed'
-          type='password'
-        />
-      </Flex>
+    <Input
+      placeholder='Password'
+      borderRadius='5px'
+      p='2'
+      w='full'
+      bg='gray.50'
+      variant='flushed'
+      type='password'
+    />
+    <Button mt={20} type="submit" colorScheme="blue" w='calc( 100% - 25% )'>
+      Login
+    </Button>
 
-      <Button mt={20} type="submit" colorScheme="blue" w='calc( 100% - 25% )'>
-        Submit
-      </Button>
+  </Flex>
+
+
   </Box>
   )
 }
