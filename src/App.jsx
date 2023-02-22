@@ -1,34 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useState, useEffect, useMemo } from "react";
+import { ApolloProvider } from "@apollo/client";
+import { ToastContainer } from "react-toastify";
+import client from "./config/apollo";
+import Auth from "./pages/Auth";
+import { getToken, decodeToken, removeToken } from "./utils/token";
+import AuthContext from "./context/AuthContext";
+import Navigation from "./routes/Navigation";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [auth, setAuth] = useState(undefined);
+
+  useEffect(() => {
+    const token = getToken();
+    if (!token) {
+      setAuth(null);
+    } else {
+      setAuth(decodeToken(token));
+    }
+  }, []);
+
+  const logout = () => {
+    // removeToken();
+    // setAuth(null);
+    console.log(logout);
+  };
+
+  const setUser = (user) => {
+    setAuth(user);
+  };
+
+  const authData = useMemo(
+    () => ({
+      auth,
+      logout,
+      setUser,
+    }),
+    [auth]
+  );
+
+  if (auth === undefined) return null;
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <ApolloProvider client={client}>
+      <AuthContext.Provider value={authData}>
+        {!auth ? <Auth /> : <Navigation />}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </AuthContext.Provider>
+    </ApolloProvider>
+  );
 }
-
-export default App
