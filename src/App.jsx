@@ -1,61 +1,25 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { ApolloProvider } from "@apollo/client";
-import { ToastContainer } from "react-toastify";
-import client from "./config/apollo";
-import Auth from "./pages/Auth";
-import { getToken, decodeToken, removeToken } from "./utils/token";
-import AuthContext from "./context/AuthContext";
-import Navigation from "./routes/Navigation";
 
-export default function App() {
-  const [auth, setAuth] = useState(undefined);
+import React, { useState } from 'react'
 
-  useEffect(() => {
-    const token = getToken();
-    if (!token) {
-      setAuth(null);
-    } else {
-      setAuth(decodeToken(token));
-    }
-  }, []);
+import { ApolloProvider } from '@apollo/client'
+import client from './config/apollo'
 
-  const logout = () => {
-    // removeToken();
-    // setAuth(null);
-    console.log(logout);
-  };
+import { BrowserRouter } from 'react-router-dom'
 
-  const setUser = (user) => {
-    setAuth(user);
-  };
+import { AuthPage } from './pages/auth'
+import { Box } from '@chakra-ui/react'
 
-  const authData = useMemo(
-    () => ({
-      auth,
-      logout,
-      setUser,
-    }),
-    [auth]
-  );
 
-  if (auth === undefined) return null;
+
+export const App = () => {
+
+  const [auth, setAuth] = useState()
 
   return (
-    <ApolloProvider client={client}>
-      <AuthContext.Provider value={authData}>
-        {!auth ? <Auth /> : <Navigation />}
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      </AuthContext.Provider>
-    </ApolloProvider>
-  );
+    <BrowserRouter>
+      <ApolloProvider client={client}>
+        { !auth ? <AuthPage /> : <h1> Logeado </h1> }
+      </ApolloProvider>
+    </BrowserRouter>
+  )
 }
