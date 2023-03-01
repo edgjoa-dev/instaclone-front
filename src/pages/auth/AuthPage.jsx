@@ -32,7 +32,12 @@ return (
                 p='20px 50px'
                 maxW='400px'
                 >
-                { showLogin ? <LoginPage/> : <RegisterPage  setShowLogin={setShowLogin} /> }
+                { showLogin ? (
+                    <LoginPage/>
+                ) : (
+                    <RegisterPage  setShowLogin={setShowLogin} /> 
+                )
+                }
             </Box>
 
             <Box as='div'

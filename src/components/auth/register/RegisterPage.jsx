@@ -7,10 +7,12 @@ import { REGISTER } from '../../../gql/user';
 
 export const RegisterPage = (props) => {
 
-    const { setShowlogin } = props;
+    const { setShowLogin } = props;
 
     const [ register ] = useMutation(REGISTER)
+    const toast = useToast()
 
+    
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: Yup.object({
@@ -36,15 +38,32 @@ export const RegisterPage = (props) => {
                         input: newUser,
                     }
                 })
+                toast({
+                    title: 'Cuenta creada.',
+                    description: "Hemos creado una cuenta para tí.",
+                    status: 'success',
+                    variant: 'subtle',
+                    position:'top-right',
+                    duration: 5000,
+                    isClosable: true,
+                })
+                setShowLogin(true)
                 console.log(result);
-
             } catch (error) {
+                toast({
+                    title: `Error de registro: ${error.message}`,
+                    description: "válidar campos nuevamente",
+                    status: 'error',
+                    variant: 'subtle',
+                    position:'top-right',
+                    duration: 5000,
+                    isClosable: true,
+                })
                 console.log(error);
             }
         },
     })
-
-    //const toast = useToast()
+    
 
     return (
         <Container>
