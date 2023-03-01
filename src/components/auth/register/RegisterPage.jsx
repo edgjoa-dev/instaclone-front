@@ -22,6 +22,19 @@ export const RegisterPage = (props) => {
             password: Yup.string('La contraseña es obligatoria')
             .required(true)
             .min(8)
+            .test(
+                'password-requirements',
+                'La contraseña debe contener al menos tres letras mayúsculas, tres letras minúsculas y tres números',
+                (value) => {
+                    const regexUpper = /[A-Z]/g;
+                    const regexLower = /[a-z]/g;
+                    const regexNumber = /[0-9]/g;
+                    const uppercaseCount = (value.match(regexUpper) || []).length;
+                    const lowercaseCount = (value.match(regexLower) || []).length;
+                    const numberCount = (value.match(regexNumber) || []).length;
+                    return uppercaseCount >= 3 && lowercaseCount >= 3 && numberCount >= 3;
+                }
+            )
             .oneOf([Yup.ref('repeatPassword')], 'Las contraseñas no coinciden'),
             repeatPassword: Yup.string()
             .required(true)
@@ -90,6 +103,7 @@ export const RegisterPage = (props) => {
                         onChange={formik.handleChange}
                         value={formik.values.name === undefined ? '' : formik.values.name}
                         isInvalid={ formik.errors.name }
+                        
                     />
                     
                     <Input
@@ -114,7 +128,6 @@ export const RegisterPage = (props) => {
                         isInvalid={ formik.errors.email }
                     />
 
-
                     <Input
                         id='password'
                         placeholder='Contraseña'
@@ -124,7 +137,7 @@ export const RegisterPage = (props) => {
                         onChange={formik.handleChange}
                         value={formik.values.password === undefined ? '' : formik.values.password}
                         isInvalid={ formik.errors.password }
-                    />
+                        />
 
                     <Input
                         id='repeatPassword'
