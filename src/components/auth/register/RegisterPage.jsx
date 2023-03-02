@@ -103,7 +103,9 @@ export const RegisterPage = (props) => {
                         onChange={formik.handleChange}
                         value={formik.values.name === undefined ? '' : formik.values.name}
                         isInvalid={ formik.errors.name }
-                        
+                        _hover={{ 
+                            
+                        }}
                     />
                     
                     <Input
@@ -130,6 +132,7 @@ export const RegisterPage = (props) => {
 
                     <Input
                         id='password'
+                        autoComplete='off'
                         placeholder='Contraseña'
                         variant='filled'
                         name='password'
