@@ -8,7 +8,7 @@ import { RegisterPage } from '../../components/auth/register';
 
 export const AuthPage = () => {
 
-    const [showLogin, setShowLogin] = useState(false)
+    const [showLogin, setShowLogin] = useState(true)
 
 return (
     <Container className="animate__animated animate__fadeIn">
