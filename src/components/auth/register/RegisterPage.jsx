@@ -6,13 +6,11 @@ import { useMutation } from '@apollo/client';
 import { REGISTER } from '../../../gql/user';
 
 export const RegisterPage = (props) => {
-
     const { setShowLogin } = props;
 
     const [ register ] = useMutation(REGISTER)
     const toast = useToast()
 
-    
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: Yup.object({
