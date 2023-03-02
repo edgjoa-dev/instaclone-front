@@ -1,11 +1,23 @@
 import React from 'react'
 import { Box, Button, Container, FormControl, Input, Text } from '@chakra-ui/react'
+import { useFormik } from 'formik';
 
 
 export const LoginPage = ( props ) => {
 
     const { setShowLogin } = props;
     console.log(setShowLogin);
+
+    const formik = useFormik({
+        initialValues: initialValues(),
+        validationSchema: null,
+        onSubmit: async( formData )=> {
+            console.log(formData);
+        }
+    })
+
+
+
 
     return (
         <Container>
@@ -15,6 +27,7 @@ export const LoginPage = ( props ) => {
                 </Text>
 
                 <FormControl as='form'
+                    onSubmit={ formik.handleSubmit }
                     mt='1'
                     display='flex'
                     justifyContent='center'
@@ -29,17 +42,20 @@ export const LoginPage = ( props ) => {
                         autoFocus={true}
                         placeholder='Correo electrónico'
                         variant='filled'
-                        name='name'
+                        name='email'
                         type='email'
+                        value={ formik.values.email }
+                        onChange={ formik.handleChange }
                         />
 
                     <Input
                         id='password'
-                        autoFocus={true}
                         placeholder='password'
                         variant='filled'
                         name='password'
                         type='password'
+                        value={ formik.values.password }
+                        onChange={ formik.handleChange }
                         />
 
                 <Button colorScheme='telegram' type='submit' w='full' mt='55px'>
@@ -50,4 +66,15 @@ export const LoginPage = ( props ) => {
             </Box>
         </Container>
     )
+}
+
+
+
+
+function initialValues() {
+    return{
+        email: '',
+        password: '',
+    }
+
 }
