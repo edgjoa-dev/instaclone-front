@@ -2,8 +2,12 @@ import React from 'react'
 import { Box, Button, Container, FormControl, Input, Text } from '@chakra-ui/react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup'
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../../gql/user';
 
 export const LoginPage = () => {
+
+    const [ login ] = useMutation(LOGIN)
     
     const formik = useFormik({
         initialValues: initialValues(),
@@ -27,7 +31,18 @@ export const LoginPage = () => {
             ),
         }),
         onSubmit: async( formData )=> {
-            console.log(formData);
+
+            try {
+                const result = await login({
+                    variables: {
+                        input: formData,
+                    }
+                })
+                console.log(result)
+
+            } catch (error) {
+                console.log(error);
+            }
         }
     })
 
