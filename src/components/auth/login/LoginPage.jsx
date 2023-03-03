@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../../gql/user';
+import { setToken } from '../../../utils/token';
 
 export const LoginPage = () => {
 
@@ -39,8 +40,8 @@ export const LoginPage = () => {
                         input: formData,
                     }
                 })
-                console.log(data)
-
+                const {token} = data.login
+                setToken(token)
             } catch (error) {
                 setError(error.message)
             }
