@@ -11,7 +11,7 @@ export const AuthPage = () => {
     const [showLogin, setShowLogin] = useState(true)
 
 return (
-    <Container className="animate__animated animate__fadeIn">
+    <Container className="animate__animated animate__fadeIn" centerContent>
         <Box as='div'
             alignItems='center'
             display='flex'

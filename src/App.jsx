@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { AuthPage } from './pages/auth'
 import { getToken } from './utils/token'
 import { AuthContext } from './context/AuthContext'
+import { Home } from './pages/Home'
 
 
 
@@ -46,7 +47,7 @@ export const App = () => {
     <BrowserRouter>
       <ApolloProvider client={client}>
         <AuthContext.Provider value={authData}>
-        { !auth ? <AuthPage /> : <h1> Logeado </h1> }
+        { !auth ? <AuthPage /> : <Home /> }
         </AuthContext.Provider>
       </ApolloProvider>
     </BrowserRouter>
