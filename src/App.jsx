@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import { ApolloProvider } from '@apollo/client'
 import client from './config/apollo'
@@ -16,11 +16,6 @@ export const App = () => {
 
   const [auth, setAuth] = useState(undefined)
 
-  const authData = {
-    name: 'Edgar Joaquin',
-    email:'flores@gmail.com'
-  }
-
   useEffect(() => {
     const token = getToken()
     if(!token){
@@ -29,7 +24,23 @@ export const App = () => {
       setAuth(token)
     }
   }, [])
+
+
+  const logout = ()=> {
+    console.log('Cerrar sesión');
+  }
   
+  const setUser = (user)=> {
+    setAuth(user)
+  }
+
+  const authData = useMemo(() => ({
+    auth,
+    logout,
+    setUser,
+  }),
+    [auth]
+  );
 
   return (
     <BrowserRouter>

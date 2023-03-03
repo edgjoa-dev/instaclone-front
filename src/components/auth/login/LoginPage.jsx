@@ -11,9 +11,8 @@ export const LoginPage = () => {
 
     const [error, setError] = useState("")
     const [ login ] = useMutation(LOGIN)
+    const { setUser } = useAuth();
 
-    const auth = useAuth();
-    console.log(auth);
     
     const formik = useFormik({
         initialValues: initialValues(),
@@ -46,6 +45,7 @@ export const LoginPage = () => {
                 })
                 const {token} = data.login
                 setToken(token)
+                setUser(token)
             } catch (error) {
                 setError(error.message)
             }
