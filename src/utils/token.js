@@ -1,5 +1,5 @@
 import { TOKEN } from './constants'
-import jwt_decode from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 
 
 export const setToken = ( token )=> {
@@ -11,5 +11,5 @@ export const getToken = () => {
 }
 
 export const decodeToken = ( token )=> {
-    return jwt_decode(token)
+    return jwtDecode(token)
 }

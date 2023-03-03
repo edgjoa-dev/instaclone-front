@@ -4,12 +4,12 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { ApolloProvider } from '@apollo/client'
 import client from './config/apollo'
 
-import { BrowserRouter } from 'react-router-dom'
-
 import { AuthPage } from './pages/auth'
 import { getToken } from './utils/token'
 import { AuthContext } from './context/AuthContext'
-import { Home } from './pages/Home'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './routes/routes'
+
 
 
 
@@ -44,12 +44,10 @@ export const App = () => {
   );
 
   return (
-    <BrowserRouter>
       <ApolloProvider client={client}>
         <AuthContext.Provider value={authData}>
-        { !auth ? <AuthPage /> : <Home /> }
+            { !auth ? <AuthPage /> : <RouterProvider router={router} /> }
         </AuthContext.Provider>
       </ApolloProvider>
-    </BrowserRouter>
   )
 }
