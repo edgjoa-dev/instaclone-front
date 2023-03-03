@@ -8,12 +8,16 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Home />,
+        errorElement: <Error404 />
+    },
+    {
+        path: "/feed",
+        element: <Home />,
+        errorElement: <Error404 />
     },
     {
         path: "user/:id",
         element: <User />,
-    },
-    {
-        element: <Error404 />,
+        errorElement: <Error404 />
     },
 ]);
