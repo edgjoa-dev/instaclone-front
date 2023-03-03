@@ -1,16 +1,31 @@
 import React from 'react'
 import { Box, Button, Container, FormControl, Input, Text } from '@chakra-ui/react'
 import { useFormik } from 'formik';
+import * as Yup from 'yup'
 
-
-export const LoginPage = ( props ) => {
-
-    const { setShowLogin } = props;
-    console.log(setShowLogin);
-
+export const LoginPage = () => {
+    
     const formik = useFormik({
         initialValues: initialValues(),
-        validationSchema: null,
+        validationSchema: Yup.object({
+            email: Yup.string().required(true).matches(/^[a-zA-Z0-9._   -]+@(gmail|yahoo|outlook)\.com$/, 'El correo electrónico no es válido'),
+            password: Yup.string('La contraseña es obligatoria')
+            .required(true)
+            .min(8)
+            .test(
+                'password-requirements',
+                'La contraseña debe contener al menos tres letras mayúsculas, tres letras minúsculas y tres números',
+                (value) => {
+                    const regexUpper = /[A-Z]/g;
+                    const regexLower = /[a-z]/g;
+                    const regexNumber = /[0-9]/g;
+                    const uppercaseCount = (value.match(regexUpper) || []).length;
+                    const lowercaseCount = (value.match(regexLower) || []).length;
+                    const numberCount = (value.match(regexNumber) || []).length;
+                    return uppercaseCount >= 3 && lowercaseCount >= 3 && numberCount >= 3;
+                }
+            ),
+        }),
         onSubmit: async( formData )=> {
             console.log(formData);
         }
@@ -32,7 +47,7 @@ export const LoginPage = ( props ) => {
                     display='flex'
                     justifyContent='center'
                     flexDir='column'
-                    gap='3'
+                    gap='6'
                     p='1'
                     h='333px'
                 >
@@ -46,6 +61,7 @@ export const LoginPage = ( props ) => {
                         type='email'
                         value={ formik.values.email }
                         onChange={ formik.handleChange }
+                        isInvalid={ formik.errors.email }
                         />
 
                     <Input
@@ -56,6 +72,7 @@ export const LoginPage = ( props ) => {
                         type='password'
                         value={ formik.values.password }
                         onChange={ formik.handleChange }
+                        isInvalid={ formik.errors.password }
                         />
 
                 <Button colorScheme='telegram' type='submit' w='full' mt='55px'>
