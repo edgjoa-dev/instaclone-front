@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Button, Container, FormControl, Input, Text } from '@chakra-ui/react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup'
@@ -7,6 +7,7 @@ import { LOGIN } from '../../../gql/user';
 
 export const LoginPage = () => {
 
+    const [error, setError] = useState("")
     const [ login ] = useMutation(LOGIN)
     
     const formik = useFormik({
@@ -31,17 +32,17 @@ export const LoginPage = () => {
             ),
         }),
         onSubmit: async( formData )=> {
-
+            setError('');
             try {
-                const result = await login({
+                const { data } = await login({
                     variables: {
                         input: formData,
                     }
                 })
-                console.log(result)
+                console.log(data)
 
             } catch (error) {
-                console.log(error);
+                setError(error.message)
             }
         }
     })
@@ -93,6 +94,10 @@ export const LoginPage = () => {
                 <Button colorScheme='telegram' type='submit' w='full' mt='55px'>
                     Iniciar sesión
                 </Button>
+                
+                <Box h='2rem' w='full'>
+                    { error && <Text as='p' color='red.500' fontWeight='medium' textAlign='center'> { error } </Text> }
+                </Box>
                 
                 </FormControl>
             </Box>
