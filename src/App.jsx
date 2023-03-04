@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client'
 import client from './config/apollo'
 
 import { AuthPage } from './pages/auth'
-import { getToken } from './utils/token'
+import { decodeToken, getToken } from './utils/token'
 import { AuthContext } from './context/AuthContext'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routes/routes'
@@ -22,7 +22,7 @@ export const App = () => {
     if(!token){
       setAuth(null)
     }else{
-      setAuth(token)
+      setAuth( decodeToken(token) )
     }
   }, [])
 

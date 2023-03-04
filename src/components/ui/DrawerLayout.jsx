@@ -1,15 +1,23 @@
-import { Avatar, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Icon, Image, Input, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useRef } from 'react'
-import instaclone from '../../assets/png/instaclone.png'
-import ImageNotFound from '../../assets/png/avatar.png'
-import { HiMenu } from 'react-icons/hi'
+
 import { Link } from 'react-router-dom'
+import { Avatar, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Icon, Image, Input, Text, useDisclosure } from '@chakra-ui/react'
+
+import { HiMenu } from 'react-icons/hi'
 import { BiHome } from 'react-icons/bi'
 import { FaPlus } from 'react-icons/fa'
+
+import { useAuth } from '../../hooks/useAuth.js'
+import instaclone from '../../assets/png/instaclone.png'
+import ImageNotFound from '../../assets/png/avatar.png'
+
 
 export const DrawerLayout = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
+    const { auth } = useAuth();
+
+
     return (
         <>
             <Button ref={btnRef} onClick={onOpen} colorScheme='messenger' color='ActiveCaption' variant='ghost' >
@@ -46,9 +54,9 @@ export const DrawerLayout = () => {
                                 </Icon>
                             </Button>
 
-                            <Link to='/' >
+                            <Link to={`/${auth.userName}`} >
                                 <Button colorScheme='messenger' color='ActiveCaption' variant='ghost' w='full' gap={5} >
-                                    <Avatar size='sm' name='Avatar' src={ImageNotFound} /> <Text> Avatar </Text>
+                                    <Avatar size='sm'  src={ImageNotFound} /> <Text> Avatar </Text>
                                 </Button>
                             </Link>
                             
