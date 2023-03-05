@@ -6,8 +6,7 @@ import { Profile } from '../components/ui/Profile'
 
 export const User = () => {
 
-    const {username} = useParams()
-    
+    const { username } = useParams()
 
 
     return (
