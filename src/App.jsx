@@ -43,6 +43,8 @@ export const App = () => {
     [auth]
   );
 
+  if( auth === undefined ) return null
+
   return (
       <ApolloProvider client={client}>
         <AuthContext.Provider value={authData}>
