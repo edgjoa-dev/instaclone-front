@@ -7,8 +7,7 @@ import client from './config/apollo'
 import { AuthPage } from './pages/auth'
 import { decodeToken, getToken } from './utils/token'
 import { AuthContext } from './context/AuthContext'
-import { RouterProvider } from 'react-router-dom'
-import { router } from './routes/routes'
+import { Text } from '@chakra-ui/react'
 
 
 
@@ -48,7 +47,7 @@ export const App = () => {
   return (
       <ApolloProvider client={client}>
         <AuthContext.Provider value={authData}>
-            { !auth ? <AuthPage /> : <RouterProvider router={router} /> }
+            { !auth ? <AuthPage /> : <Text fontSize='5xl'> Logeado </Text> }
         </AuthContext.Provider>
       </ApolloProvider>
   )

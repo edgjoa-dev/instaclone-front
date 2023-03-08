@@ -22,8 +22,8 @@ mutation login($input: LoginInput){
 `;
 
 export const GET_USER = gql`
-query getUser( $id: ID, $username: String ) {
-    getUser(id: $id, userName: $username){
+query getUser( $id: ID, $userName: String ) {
+    getUser(id: $id, username: $username){
         id
         name
         userName
@@ -34,5 +34,4 @@ query getUser( $id: ID, $username: String ) {
         createAt
     }
 }
-
 `;
