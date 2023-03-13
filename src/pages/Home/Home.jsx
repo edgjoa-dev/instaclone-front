@@ -6,7 +6,7 @@ import { MainLayout } from '../../layouts/MainLayout';
 export const Home = () => {
 
     const auth = useAuth()
-    console.log(auth);
+    //console.log(auth);
 
     return (
         <MainLayout>

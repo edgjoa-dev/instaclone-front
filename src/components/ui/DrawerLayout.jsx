@@ -16,7 +16,8 @@ export const DrawerLayout = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
     const { auth } = useAuth();
-    console.log(auth);
+    console.log( auth.userName );
+    //console.log(auth);
 
 
     return (
@@ -55,7 +56,7 @@ export const DrawerLayout = () => {
                                 </Icon>
                             </Button>
 
-                            <Link to={`/${auth.user}`} >
+                            <Link to={`/${auth.userName}`} >
                                 <Button colorScheme='messenger' color='ActiveCaption' variant='ghost' w='full' gap={5} >
                                     <Avatar size='sm'  src={ImageNotFound} /> <Text> Avatar </Text>
                                 </Button>

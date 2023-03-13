@@ -7,12 +7,15 @@ import { GET_USER } from '../../../gql/user'
 
 export const ProfilePage = (props) => {
     const { username } = props;
+    console.log(props);
+
+    //{ data, loading, error }
 
     const { data, loading, error } = useQuery(GET_USER, {
         variables: { username }
     })
         if(loading) return <Text fontSize='3xl'> Loading... </Text>
-        if(error.message) return <Text fontSize='3xl'>Usuario no encontrado!</Text>
+        if(error) return <Text fontSize='3xl'> Usuario no encontrado! </Text>
         const { getUser } = data;
         console.log(getUser);
 
