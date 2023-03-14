@@ -2,6 +2,8 @@ import React from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import { Box, Container, Text } from '@chakra-ui/react';
 import { MainLayout } from '../../layouts/MainLayout';
+import 'animate.css';
+
 
 export const Home = () => {
 
@@ -10,7 +12,7 @@ export const Home = () => {
 
     return (
         <MainLayout>
-            <Container centerContent>
+            <Container centerContent className='animate__animated animate__fadeInUp' >
                 <Box> 
                     <Text as='h1' fontSize='5xl'>Home Page</Text>
                 </Box>
