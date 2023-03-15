@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Box, Container, Image, Link, ModalOverlay, Spinner, Text } from '@chakra-ui/react'
+import { Box, Container, Image, Link, Spinner, Text } from '@chakra-ui/react'
 
 import { useQuery } from '@apollo/client'
 import { GET_USER } from '../../../gql/user'
@@ -10,25 +10,41 @@ import profile_img from '../../../assets/png/avatar.png'
 import 'animate.css';
 import { UserNotFound } from '../userNotFound'
 import { ModalBasic } from '../modal/ModalBasic'
+import { AvatarForm } from '../User/AvatarForm'
+import { useAuth } from '../../../hooks/useAuth'
 
 export const ProfilePage = (props) => {
+
     const { username } = props;
     console.log(props);
 
+
+
     const [showModal, setShowModal] = useState(false)
-    
+    const [titleModal, setTitleModal] = useState('')
+    const [childrenModal, setChildrenModal] = useState(null)
+
+    const {auth} = useAuth();
         
         const { data, loading, error } = useQuery(GET_USER, {
             variables: { username }
         })
-        if(loading) return <Box > <Spinner 
-        color='alphaWhite.500'
-            size={'xl'}
-            thickness='5px'
-        /></Box>
+        if(loading) return <Box > <Spinner color='alphaWhite.500' size={'xl'} thickness='5px'/></Box>
         if(error) return <UserNotFound />
         const { getUser } = data;
         console.log(getUser);
+
+    const handlerModal = (type) => {
+        switch (type) {
+            case 'avatar':
+                setTitleModal( 'Cambiar foto de perfil' )
+                setChildrenModal(<AvatarForm setShowModal={setShowModal} />)
+                setShowModal(true)
+                break;
+            default:
+                break;
+        }
+    }
 
         return (
         <Container centerContent p='10' className='animate__animated animate__fadeInUp' display='flex' flexDir='row' gap='4'>
@@ -40,7 +56,7 @@ export const ProfilePage = (props) => {
                 h='150px'
                 w='150px'
             >
-                <Image src={profile_img} alt='foto_perfil' borderRadius='50%' size='md' onClick={()=> setShowModal(true)} />
+                <Image src={profile_img} alt='foto_perfil' borderRadius='50%' size='md' onClick={()=>  username === auth.userName && handlerModal('avatar')} />
             </Box>
             <Box>
                 <Text> Header Profile </Text>
@@ -57,10 +73,8 @@ export const ProfilePage = (props) => {
                             )
                     }
             </Box>
-            <ModalBasic show={ showModal } setShow={ setShowModal } title='Subir Avatar' >
-                <p>opciones...</p>
-                <p>opciones...</p>
-                <p>opciones...</p>
+            <ModalBasic show={ showModal } setShow={ setShowModal } title={titleModal} >
+                { childrenModal }
             </ModalBasic>
         </Container>
     )

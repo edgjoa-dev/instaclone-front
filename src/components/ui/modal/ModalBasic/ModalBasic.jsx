@@ -25,9 +25,9 @@ export const ModalBasic = (props) => {
 
         <Modal isCentered isOpen={show} onClose={onClose} setOverlay={setOverlay}>
             { overlay }
-            <ModalContent>
+            <ModalContent display='flex' alignItems='center' w='full'>
                 <ModalHeader>{title}</ModalHeader>
-                    <ModalBody>
+                    <ModalBody  w='full'>
                         { children }
                     </ModalBody>
             </ModalContent>
