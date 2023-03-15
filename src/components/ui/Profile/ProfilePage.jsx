@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Box, Container, Image, Link, Spinner, Text } from '@chakra-ui/react'
+import { Box, Container, Image, Link, ModalOverlay, Spinner, Text } from '@chakra-ui/react'
 
 import { useQuery } from '@apollo/client'
 import { GET_USER } from '../../../gql/user'
@@ -16,22 +16,13 @@ export const ProfilePage = (props) => {
     console.log(props);
 
     const [showModal, setShowModal] = useState(false)
-
-    const OverlayTwo = () => (
-        <ModalOverlay
-            bg='none'
-            backdropFilter='auto'
-            backdropInvert='80%'
-            backdropBlur='2px'
-        />
-        )
-
-
-    const { data, loading, error } = useQuery(GET_USER, {
-        variables: { username }
-    })
+    
+        
+        const { data, loading, error } = useQuery(GET_USER, {
+            variables: { username }
+        })
         if(loading) return <Box > <Spinner 
-            color='alphaWhite.500'
+        color='alphaWhite.500'
             size={'xl'}
             thickness='5px'
         /></Box>
@@ -39,7 +30,7 @@ export const ProfilePage = (props) => {
         const { getUser } = data;
         console.log(getUser);
 
-    return (
+        return (
         <Container centerContent p='10' className='animate__animated animate__fadeInUp' display='flex' flexDir='row' gap='4'>
             <Box
                 display='flex'
@@ -66,7 +57,7 @@ export const ProfilePage = (props) => {
                             )
                     }
             </Box>
-            <ModalBasic show={ showModal } setShow={ setShowModal } title='subir Avatar' >
+            <ModalBasic show={ showModal } setShow={ setShowModal } title='Subir Avatar' >
                 <p>opciones...</p>
                 <p>opciones...</p>
                 <p>opciones...</p>
