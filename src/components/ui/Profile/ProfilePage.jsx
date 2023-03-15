@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Container, Image, Progress, Spinner, Text } from '@chakra-ui/react'
+import { Box, Container, Image, Link, Spinner, Text } from '@chakra-ui/react'
 
 import { useQuery } from '@apollo/client'
 import { GET_USER } from '../../../gql/user'
@@ -26,7 +26,7 @@ export const ProfilePage = (props) => {
         console.log(getUser);
 
     return (
-        <Container centerContent p='10' className='animate__animated animate__fadeInUp'>
+        <Container centerContent p='10' className='animate__animated animate__fadeInUp' display='flex' flexDir='row' gap='4'>
             <Box
                 display='flex'
                 justifyContent='center'
@@ -40,15 +40,15 @@ export const ProfilePage = (props) => {
             <Box>
                 <Text> Header Profile </Text>
                 <Text> Followers </Text>
-                <Text as='p'>{ getUser.name }</Text>
+                <Text as='p' fontWeight='bold'>{ getUser.name }</Text>
                     { 
                         getUser.siteWeb && (
-                            <a href={getUser.siteWeb} target='_blank'>{getUser.siteWeb}</a>
+                            <Link color='teal.500' href={getUser.siteWeb} isExternal>{getUser.siteWeb}</Link>
                             )
                     }
                     { 
                         getUser.description && (
-                            <Text>{getUser.description}</Text>
+                            <Text as='h3' fontWeight='medium' mt='1'>{getUser.description}</Text>
                             )
                     }
             </Box>
