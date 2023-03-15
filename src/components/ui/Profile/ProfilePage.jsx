@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Box, Container, Image, Link, Spinner, Text } from '@chakra-ui/react'
 
@@ -9,10 +9,23 @@ import profile_img from '../../../assets/png/avatar.png'
 
 import 'animate.css';
 import { UserNotFound } from '../userNotFound'
+import { ModalBasic } from '../modal/ModalBasic'
 
 export const ProfilePage = (props) => {
     const { username } = props;
     console.log(props);
+
+    const [showModal, setShowModal] = useState(false)
+
+    const OverlayTwo = () => (
+        <ModalOverlay
+            bg='none'
+            backdropFilter='auto'
+            backdropInvert='80%'
+            backdropBlur='2px'
+        />
+        )
+
 
     const { data, loading, error } = useQuery(GET_USER, {
         variables: { username }
@@ -36,7 +49,7 @@ export const ProfilePage = (props) => {
                 h='150px'
                 w='150px'
             >
-                <Image src={profile_img} alt='foto_perfil' borderRadius='50%' size='md' />
+                <Image src={profile_img} alt='foto_perfil' borderRadius='50%' size='md' onClick={()=> setShowModal(true)} />
             </Box>
             <Box>
                 <Text> Header Profile </Text>
@@ -53,6 +66,11 @@ export const ProfilePage = (props) => {
                             )
                     }
             </Box>
+            <ModalBasic show={ showModal } setShow={ setShowModal } title='subir Avatar' >
+                <p>opciones...</p>
+                <p>opciones...</p>
+                <p>opciones...</p>
+            </ModalBasic>
         </Container>
     )
 }
