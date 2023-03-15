@@ -8,6 +8,7 @@ import { GET_USER } from '../../../gql/user'
 import profile_img from '../../../assets/png/avatar.png'
 
 import 'animate.css';
+import { UserNotFound } from '../userNotFound'
 
 export const ProfilePage = (props) => {
     const { username } = props;
@@ -21,7 +22,7 @@ export const ProfilePage = (props) => {
             size={'xl'}
             thickness='5px'
         /></Box>
-        if(error) return <Text fontSize='3xl'> Usuario no encontrado! </Text>
+        if(error) return <UserNotFound />
         const { getUser } = data;
         console.log(getUser);
 
