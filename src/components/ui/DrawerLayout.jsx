@@ -16,8 +16,6 @@ export const DrawerLayout = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
     const { auth } = useAuth();
-    console.log( auth.userName );
-    //console.log(auth);
 
 
     return (

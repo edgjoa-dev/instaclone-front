@@ -16,9 +16,6 @@ import { useAuth } from '../../../hooks/useAuth'
 export const ProfilePage = (props) => {
 
     const { username } = props;
-    console.log(props);
-
-
 
     const [showModal, setShowModal] = useState(false)
     const [titleModal, setTitleModal] = useState('')
@@ -47,7 +44,7 @@ export const ProfilePage = (props) => {
     }
 
         return (
-        <Container centerContent p='10' className='animate__animated animate__fadeInUp' display='flex' flexDir='row' gap='4'>
+        <Container centerContent p='4' className='animate__animated animate__fadeInUp' display='flex' justifyContent='space-evenly' flexDir='row' w='100vw' >
             <Box
                 display='flex'
                 justifyContent='center'

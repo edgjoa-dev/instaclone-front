@@ -7,8 +7,8 @@ import 'animate.css';
 
 
 export const User = () => {
-
     const { username } = useParams()
+
 
 
     return (

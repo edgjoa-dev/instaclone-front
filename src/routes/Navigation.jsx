@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { map } from "lodash";
 import { routes } from "./router";
 
 export const Navigation = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 {map(routes, (route, index) => (
                 <Route
@@ -16,6 +16,6 @@ export const Navigation = () => {
                 />
                 ))}
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
